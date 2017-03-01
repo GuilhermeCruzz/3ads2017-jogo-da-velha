@@ -9,37 +9,37 @@ public class AnalisadorJogoDaVelhaTest {
 
 	@Test
 	public void analisarJogoIncompletoParte1() {
-		String resultado = AnalisadorJogoDaVelha.analisar(
-			"   | O |   \n" +
-			"---+---+---\n" +
-			"   |   |   \n" +
-			"---+---+---\n" +
-			"   |   |   \n");
-		
-		assertThat(resultado).isEqualTo(
-			"   | O |   \n" +
-			"---+---+---\n" +
-			"   |   |   \n" +
-			"---+---+---\n" +
-			"   |   |   \n" +
-			"===========\n" +
-			" ? | O | ? \n" +
-			"---+---+---\n" +
-			" ? | ? | ? \n" +
-			"---+---+---\n" +
-			" ? | ? | ? \n" +
-			"===========\n" +
-			"Impossível dar resposta porque o jogo está incompleto.");
+                String resultado = AnalisadorJogoDaVelha.analisar(
+                                "   | O |   \n" +
+                                "---+---+---\n" +
+                                "   |   |   \n" +
+                                "---+---+---\n" +
+                                "   |   |   \n");
+
+                assertThat(resultado).isEqualTo(
+                                "   | O |   \n" +
+                                "---+---+---\n" +
+                                "   |   |   \n" +
+                                "---+---+---\n" +
+                                "   |   |   \n" +
+                                "===========\n" +
+                                " ? | O | ? \n" +
+                                "---+---+---\n" +
+                                " ? | ? | ? \n" +
+                                "---+---+---\n" +
+                                " ? | ? | ? \n" +
+                                "===========\n" +
+                                "Impossível dar resposta porque o jogo está incompleto.");
 	}
 	
 	@Test
 	public void analisarJogoIncompletoParte2() {
 		String resultado = AnalisadorJogoDaVelha.analisar(
-				"   | O |   \n" +
-				"---+---+---\n" +
-				"   | X |   \n" +
-				"---+---+---\n" +
-				"   |   |   \n");
+                                "   | O |   \n" +
+                                "---+---+---\n" +
+                                "   | X |   \n" +
+                                "---+---+---\n" +
+                                "   |   |   \n");
 		
 		assertThat(resultado).isEqualTo(
 				"   | O |   \n" +
@@ -214,42 +214,119 @@ public class AnalisadorJogoDaVelhaTest {
 				"---+---+---\n" +
 				" O | X |   \n" +
 				"---+---+---\n" +
-				" O | X | O \n");
+				" O | X |   \n");
 		
 		assertThat(resultado).isEqualTo(
 				" O |   | X \n" +
 				"---+---+---\n" +
 				" O | X |   \n" +
 				"---+---+---\n" +
-				" O | X | O \n" +
+				" O | X |   \n" +
 				"===========\n" +
 				" * |   | X \n" +
 				"---+---+---\n" +
 				" * | X |   \n" +
 				"---+---+---\n" +
-				" * | X | O \n" +
+				" * | X |   \n" +
 				"===========\n" +
 				"Jogo finalizado. Jogador O ganhou!");
 	}
 
 	@Test
 	public void analisarJogoCompletoGanhoVertical2() {
-		fail("Implementar");
+		String resultado = AnalisadorJogoDaVelha.analisar(
+				" X | O | X \n" +
+				"---+---+---\n" +
+				"   | O |   \n" +
+				"---+---+---\n" +
+				" X | O |   \n");
+		
+		assertThat(resultado).isEqualTo(
+				" X | O | X \n" +
+				"---+---+---\n" +
+				"   | O |   \n" +
+				"---+---+---\n" +
+				" X | O |   \n" +
+				"===========\n" +
+				" X | * | X \n" +
+				"---+---+---\n" +
+				"   | * |   \n" +
+				"---+---+---\n" +
+				" X | * |   \n" +
+				"===========\n" +
+				"Jogo finalizado. Jogador O ganhou!");
 	}
 	
 	@Test
 	public void analisarJogoCompletoGanhoVertical3() {
-		fail("Implementar");
+		String resultado = AnalisadorJogoDaVelha.analisar(
+				"   | O | X \n" +
+				"---+---+---\n" +
+				" O |   | X \n" +
+				"---+---+---\n" +
+				"   | O | X \n");
+		
+                assertThat(resultado).isEqualTo(
+				"   | O | X \n" +
+				"---+---+---\n" +
+				" O |   | X \n" +
+				"---+---+---\n" +
+				"   | O | X \n" +
+				"===========\n" +
+				"   | O | * \n" +
+				"---+---+---\n" +
+				" O |   | * \n" +
+				"---+---+---\n" +
+				"   | O | * \n" +
+				"===========\n" +
+				"Jogo finalizado. Jogador O ganhou!");
 	}
 	
 	@Test
 	public void analisarJogoCompletoGanhoHorizontal1() {
-		fail("Implementar");
+		String resultado = AnalisadorJogoDaVelha.analisar(
+				" O | O | O \n" +
+				"---+---+---\n" +
+				" X | X |   \n" +
+				"---+---+---\n" +
+				"   |   | X \n");
+		
+		assertThat(resultado).isEqualTo(
+				" O | O | O \n" +
+				"---+---+---\n" +
+				" X | X |   \n" +
+				"---+---+---\n" +
+				"   |   | X \n" +
+				"===========\n" +
+				" * | * | * \n" +
+				"---+---+---\n" +
+				" X | X |   \n" +
+				"---+---+---\n" +
+				"   |   | X \n" +
+				"Jogo finalizado. Jogador O ganhou!");
 	}
 	
 	@Test
 	public void analisarJogoCompletoGanhoHorizontal2() {
-		fail("Implementar");
+		String resultado = AnalisadorJogoDaVelha.analisar(
+				" X | X |   \n" +
+				"---+---+---\n" +
+				" O | O | O \n" +
+				"---+---+---\n" +
+				"   |   | X \n");		
+		assertThat(resultado).isEqualTo(
+				" X | X |   \n" +
+				"---+---+---\n" +
+				" O | O | O \n" +
+				"---+---+---\n" +
+				"   |   | X \n" +
+				"===========\n" +
+				" X | X |   \n" +
+				"---+---+---\n" +
+				" * | * | * \n" +
+				"---+---+---\n" +
+				"   |   | X \n" +
+				"Jogo finalizado. Jogador O ganhou!");
 	}
 	
 	@Test
